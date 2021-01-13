@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <title>jQuery UI Draggable - Default functionality</title>
+        <link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
+        <link rel="stylesheet" href="/resources/demos/style.css">
+        <style>
+        #draggable { width: 150px; height: 150px; padding: 0.5em; }
+        #sortable { list-style-type: none; margin: 0; padding: 0; width: 60%; }
+        #sortable li { margin: 0 3px 3px 3px; padding: 0.4em; padding-left: 1.5em; font-size: 1.4em; height: 18px; }
+        #sortable li span { position: absolute; margin-left: -1.3em; }
+        </style>
+        <link href="style.css" rel="stylesheet"></link>
+        <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
+        <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+        <script>
+        $( function() {
+            $( "#draggable" ).draggable({
+                containment: $( "#interactable" )
+            });
+        } );
+        </script>
+        <script src="main.js" defer></script>
+    </head>
+    <body>
+        <div id="container">
+            <div id="question">
+                <p>Question 1: What is this question going to ask?</p>
+            </div>
+            <div id="interactable">
+                <div id="background">
+                    <img src="https://nineplanets.org/wp-content/uploads/2019/09/earth.png">
+                </div>
+                <div id="toolbox">
+                    <div id="draggable" class="ui-widget-content">
+                        <div class="flexbox"><p id="create">demodemodemo</p></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </body>
+</html>
