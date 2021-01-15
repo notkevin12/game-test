@@ -1,5 +1,5 @@
 body {
-    background-color:rgb(92, 92, 92)
+    background-color:rgb(37, 37, 37)
 }
 
 #container {
@@ -9,7 +9,7 @@ body {
     align-items: flex-start; 
     justify-content: center;
     flex-wrap: wrap;
-    background-color: pink;
+    background-color: rgb(105, 105, 105);
     height: 90vh;
     width: 90vw;
     border-radius: 10px;
