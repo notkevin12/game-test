@@ -1,0 +1,37 @@
+let toolbox = document.getElementById("toolbox");
+    draggable = ["solar-flares", "time-day", "weather-cools", "weather-heats", "sunlight-reflect", "distance-sun", "earth-rotation", "sunlight-leaves", "sunlight-bounce", "infrared-bounce", "infrared-absorb", "sunlight-absorb", "infrared-reflect", "infrared-leaves","ozone", "greenhouse", "oxygen"];
+    questions = ["Q1: What prevents heat from leaving the Earth's surface? And how so?", "Q2: Explain why Earth and Mars have different climates (Earth is warm enough to sustain life, but Mars is not) when they both have ozone layers.", "Q3: Explain what the ozone layer and greenhouse gases do for Earth."];
+    page = 1;
+for (let i = 0; i < draggable.length; i++) {
+    console.log("Hello");
+    let newitem = document.createElement("div");
+    newitem.className = "ui-widget-content";
+    newitem.id = draggable[i];
+    newitem.innerHTML = draggable[i];
+    newitem.style.height = "166px";
+    newitem.style.width = "166px";
+    newitem.style.backgroundColor = "pink";
+    newitem.style.cursor = "grab";
+    newitem.addEventListener("mousedown", highlight);
+    newitem.addEventListener("mouseup", unhighlight);
+    $(function() {
+        $( "#" + draggable[i] ).draggable();
+    });
+    toolbox.appendChild(newitem);
+}
+
+function highlight() {
+    this.style.boxShadow = "3px 3px 10px black";
+    this.style.cursor = "grabbing";
+}
+function unhighlight() {
+    this.style.boxShadow = "none";
+    this.style.cursor = "grab";
+}
+
+class Page {
+    constructor(name, number) {
+        this.name = name;
+        this.number = number;
+    }
+}
