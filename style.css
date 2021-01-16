@@ -1,10 +1,6 @@
 body {
-    background-color:rgb(37, 37, 37)
-}
-
-p {
-    font-size: 1.7vw;
-    margin: 0px 10px 0px 10px;
+    background-color:rgb(37, 37, 37);
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
 }
 
 #container {
@@ -30,17 +26,24 @@ p {
 }
 
 #question {
-    font-size: 200%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    max-width: 60%;
+    height: 100%;
+    text-align: center;
+    font-size: 1.4vw;
 }
 
 .button {
     display: flex;
     align-items: center;
     justify-content: center;
-    width: auto;
+    width: 8%;
     height: 60%;
-    border: 2px solid black;
     border-radius: 20px;
+    background-color:rgb(241, 241, 241);
+    font-size: 1.3vw;
 }
 
 #interactable {
