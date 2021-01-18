@@ -1,6 +1,7 @@
 body {
     background-color:rgb(37, 37, 37);
     font-family: Verdana, Geneva, Tahoma, sans-serif;
+    user-select: none;
 }
 
 #container {
@@ -23,6 +24,7 @@ body {
     height: 8%;
     width: 100%;
     user-select: none;
+    background-color: red;
 }
 
 #question {
@@ -42,6 +44,26 @@ body {
     height: 100%;
 }
 
+.contentcol{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 50%;
+    height: 100%;
+    border-radius: 40px;
+}
+
+.planetcol {
+    justify-content: flex-end;
+}
+
+.toolbox {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
 .button {
     display: flex;
     align-items: center;
@@ -55,12 +77,9 @@ body {
 
 #interactable {
     display: flex;
-    align-items: center;
-    justify-content: space-evenly;
-    flex-wrap: wrap;
     background-color: white;
     height: 92%;
-    width: 96%;
+    width: 100%;
     border-radius: 10px;
 }
 
@@ -74,30 +93,12 @@ body {
 }
 
 #graphic {
-    display: flex;
+    display: none;
     align-items: flex-end;
     justify-content: center;
     height: 100%;
     width: 45%;
     border-radius: 10px;
-}
-
-#toolbox1 {
-    display: none;
-    flex-wrap: wrap;
-    height: 45%;
-    width: 100%;
-    border-radius: 10px;
-    border: 2px solid rgb(0, 0, 0);
-}
-
-#toolbox2 {
-    display: flex;
-    flex-wrap: wrap;
-    height: 96%;
-    width: 45%;
-    border-radius: 10px;
-    border: 2px solid rgb(0, 0, 0);
 }
 
 #create {
@@ -116,15 +117,16 @@ body {
     justify-content: center;
 }
 
-#earth {
-    max-height: 70%;
-    max-width: 100%;
+.planet-ozone {
+    display: none;
+    height: auto;
+    width: 90%;
+    transform: translateY(50%);
 }
 
-#mars {
-    display: none;
-    max-height: 80%;
-    max-width: 45%;
+.planet {
+    height: auto;
+    width: 100%;
 }
 
 #draggable {
