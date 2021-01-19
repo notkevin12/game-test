@@ -1,18 +1,23 @@
 let buttons = document.getElementsByClassName("button");
     contentcols = document.getElementsByClassName("contentcol");
-    planets = document.getElementsByClassName("planet");
     toolboxes = document.getElementsByClassName("toolbox");
+    planets = document.getElementsByClassName("planet");
     earth = document.getElementById("earth");
     mars = document.getElementById("mars");
-    draggable = ["solar-flares", "time-day", "weather-cools", "weather-heats", "sunlight-reflect", "distance-sun", "earth-rotation", "sunlight-leaves", "sunlight-bounce", "infrared-bounce", "infrared-absorb", "sunlight-absorb", "infrared-reflect", "infrared-leaves","ozone", "greenhouse", "oxygen"];
+    draggable = ["cool-weather", "distance-from-the-sun", "greenhouse-gases", "infrared-radiation-absorbed", "infrared-radiation-bounced-around", "infrared-radiation-leaves", "infrared-radiation-reflected", "oxygen-layer", "ozone", "planet-axis-tilt", "solar-flares", "sunlight-absorbed", "sunlight-bounced-around", "sunlight-leaves", "sunlight-reflected", "time-of-day", "warm-weather"];
+    draggablenames = ["Cool Weather", "Distance From The Sun", "Greenhouse Gases", "Infrared Radiation Absorbed", "Infrared Radiation Bounced Around", "Infrared Radiation Leaves", "Infrared Radiation Reflected", "Oxygen Layer", "Ozone Layer", "Planet Axis Tilt", "Solar Flares", "Sunlight Absorbed", "Sunlight Bounced Around", "Sunlight Leaves", "Sunlight Reflected", "Time of Day", "Warm Weather"];
     questions = ["Q1: What prevents heat from leaving the Earth's surface? And how so?", "Q2: Explain why Earth and Mars have different climates (Earth is warm enough to sustain life, but Mars is not) when they both have ozone layers.", "Q3: Explain what the ozone layer and greenhouse gases do for Earth."];
     page = 1;
 
 
 
 for (let i = 0; i < buttons.length; i++) {
-    buttons[i].addEventListener("mouseover", buttonover);
-    buttons[i].addEventListener("mouseleave", buttonleave);
+    buttons[i].addEventListener("mouseover", function() {
+        this.style.transform = "scale(1.1)";
+    });
+    buttons[i].addEventListener("mouseleave", function() {
+        this.style.transform = "scale(1)";
+    });
 }
 document.getElementById("previous").addEventListener("click", function() {
     if (page > 1) {
@@ -43,33 +48,10 @@ document.getElementById("next").addEventListener("click", function() {
 
 for (let i = 0; i < draggable.length; i++) {
     for (let j = 0; j < toolboxes.length; j++) {
-        console.log("Hello");
-        let newitem = document.createElement("div");
-        newitem.id = draggable[i];
-        newitem.innerHTML = draggable[i];
-        newitem.style.height = "10vh";
-        newitem.style.width = "100%";
-        newitem.style.backgroundColor = "blue";
-        newitem.style.cursor = "grab";
+        let newdraggable = createDraggable(i);
         //newitem.addEventListener("mousedown", highlight);
         //newitem.addEventListener("mouseup", unhighlight);
-        $(function() {
-            $( "#" + draggable[i] ).draggable( {
-                scroll: false,
-                appendTo: "#interactable", 
-                containment: "#interactable",
-                stack: "img",
-                start: function() {
-                    this.style.boxShadow = "3px 3px 10px black";
-                    this.style.cursor = "grabbing";
-                },
-                stop: function() {
-                    this.style.boxShadow = "none";
-                    this.style.cursor = "grab";
-                }
-            });
-        });
-        toolboxes[j].appendChild(newitem);
+        toolboxes[j].appendChild(newdraggable);
     }
 }
 
@@ -93,12 +75,29 @@ function rearrange(input) {
     }
 }
 
-function buttonover() {
-    this.style.transform = "scale(1.1)";
+function createDraggable(index) {
+    console.log("Hello");
+    let image = document.createElement("img");
+        label = document.createElement("div");
+        wrap = document.createElement("div");
+    image.src = "media/" + draggable[index] + ".png";
+    image.style.height = "70%";
+    image.style.width = "auto";
+    //image.style.backgroundColor = "green";
+    label.style.height = "30%";
+    label.style.width = "100%";
+    //label.style.backgroundColor = "blue";
+    label.innerHTML = draggablenames[index];
+    label.style.textAlign = "center";
+    label.style.fontSize = ".6vw";
+    label.style.fontWeight = "500";
+    wrap.classList.add("draggable");
+    wrap.classList.add("index" + index);
+    wrap.appendChild(image);
+    wrap.appendChild(label);
+    return wrap;
 }
-function buttonleave() {
-    this.style.transform = "scale(1)";
-}
+
 function highlight() {
     this.style.boxShadow = "3px 3px 10px black";
     this.style.cursor = "grabbing";
@@ -107,3 +106,32 @@ function unhighlight() {
     this.style.boxShadow = "none";
     this.style.cursor = "grab";
 }
+
+$( "div.draggable" ).draggable( {
+    scroll: false,
+    appendTo: "#interactable", 
+    containment: "#interactable",
+    stack: "img",
+    start: function() {
+        this.style.boxShadow = "3px 3px 10px black";
+        this.style.cursor = "grabbing";
+    },
+    stop: function() {
+        this.style.boxShadow = "none";
+        this.style.cursor = "grab";
+    }
+});
+
+$( "div.planetcol" ).droppable( {
+    drop: function(event, ui) {
+        //alert(ui.draggable);
+        ui.draggable.css({transform: 'scale(2)'});
+    }
+});
+
+$( "div.toolcol" ).droppable( {
+    drop: function(event, ui) {
+        //alert(ui.draggable);
+        ui.draggable.css({transform: 'scale(1)'});
+    }
+});

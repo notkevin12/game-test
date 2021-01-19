@@ -24,7 +24,6 @@ body {
     height: 8%;
     width: 100%;
     user-select: none;
-    background-color: red;
 }
 
 #question {
@@ -48,20 +47,32 @@ body {
     display: flex;
     flex-direction: column;
     align-items: center;
+    justify-content: center;
     width: 50%;
     height: 100%;
-    border-radius: 40px;
 }
 
 .planetcol {
     justify-content: flex-end;
 }
 
+.toolbox-label {
+    width: 90%;
+    height: 6%;
+    font-size: 1vw;
+    text-align: center;
+}
+
 .toolbox {
     display: flex;
-    flex-direction: column;
+    flex-direction: row;
+    flex-wrap: wrap;
     justify-content: center;
     align-items: center;
+    width: 90%;
+    height: 90%;
+    background-color:rgb(241, 241, 241);
+    border-radius: 10px;
 }
 
 .button {
@@ -92,25 +103,6 @@ body {
     border-radius: 10px 10px 0px 0px;
 }
 
-#graphic {
-    display: none;
-    align-items: flex-end;
-    justify-content: center;
-    height: 100%;
-    width: 45%;
-    border-radius: 10px;
-}
-
-#create {
-    height: 100px;
-    width: 100px;
-    background-color: red;
-}
-
-.ui-widget-content {
-    box-shadow: none;
-}
-
 .flexbox {
     display: flex;
     align-items: center;
@@ -126,9 +118,19 @@ body {
 
 .planet {
     height: auto;
-    width: 100%;
+    width: 90%;
 }
 
 #draggable {
     display: none;
+}
+
+.draggable {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    height: 13%;
+    width: 30%;
+    cursor: grab;
 }
