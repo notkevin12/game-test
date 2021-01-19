@@ -6,6 +6,7 @@ let buttons = document.getElementsByClassName("button");
     mars = document.getElementById("mars");
     draggable = ["cool-weather", "distance-from-the-sun", "greenhouse-gases", "infrared-radiation-absorbed", "infrared-radiation-bounced-around", "infrared-radiation-leaves", "infrared-radiation-reflected", "oxygen-layer", "ozone", "planet-axis-tilt", "solar-flares", "sunlight-absorbed", "sunlight-bounced-around", "sunlight-leaves", "sunlight-reflected", "time-of-day", "warm-weather"];
     draggablenames = ["Cool Weather", "Distance From The Sun", "Greenhouse Gases", "Infrared Radiation Absorbed", "Infrared Radiation Bounced Around", "Infrared Radiation Leaves", "Infrared Radiation Reflected", "Oxygen Layer", "Ozone Layer", "Planet Axis Tilt", "Solar Flares", "Sunlight Absorbed", "Sunlight Bounced Around", "Sunlight Leaves", "Sunlight Reflected", "Time of Day", "Warm Weather"];
+    dragstore = new Array;
     questions = ["Q1: What prevents heat from leaving the Earth's surface? And how so?", "Q2: Explain why Earth and Mars have different climates (Earth is warm enough to sustain life, but Mars is not) when they both have ozone layers.", "Q3: Explain what the ozone layer and greenhouse gases do for Earth."];
     page = 1;
 
@@ -47,11 +48,15 @@ document.getElementById("next").addEventListener("click", function() {
 });
 
 for (let i = 0; i < draggable.length; i++) {
-    for (let j = 0; j < toolboxes.length; j++) {
-        let newdraggable = createDraggable(i);
-        //newitem.addEventListener("mousedown", highlight);
-        //newitem.addEventListener("mouseup", unhighlight);
-        toolboxes[j].appendChild(newdraggable);
+    dragstore[i] = createDraggable(i);
+}
+
+initialize();
+function initialize() {
+    for (let i = 0; i < dragstore.length; i++) {
+        for (let j = 0; j < toolboxes.length; j++) {
+            toolboxes[j].appendChild(dragstore[i].cloneNode(true));
+        }
     }
 }
 
@@ -76,21 +81,23 @@ function rearrange(input) {
 }
 
 function createDraggable(index) {
-    console.log("Hello");
     let image = document.createElement("img");
-        label = document.createElement("div");
+        imgwrap = document.createElement("div");
+        imglabel = document.createElement("div");
         wrap = document.createElement("div");
     image.src = "media/" + draggable[index] + ".png";
-    image.style.height = "70%";
-    image.style.width = "auto";
-    //image.style.backgroundColor = "green";
-    label.style.height = "30%";
-    label.style.width = "100%";
-    //label.style.backgroundColor = "blue";
-    label.innerHTML = draggablenames[index];
-    label.style.textAlign = "center";
-    label.style.fontSize = ".6vw";
-    label.style.fontWeight = "500";
+    if (index === 2 || index === 7 || index === 8) {
+        image.style.height = "80%";
+        image.style.width = "auto";
+    }
+    else {
+        image.style.height = "90%";
+        image.style.width = "auto";
+    }
+    imgwrap.className = "imgwrap";
+    imgwrap.appendChild(image);
+    imglabel.className = "imglabel";
+    imglabel.innerHTML = draggablenames[index];
     wrap.classList.add("draggable");
     wrap.classList.add("index" + index);
     wrap.addEventListener("mousedown", function() {
@@ -99,8 +106,8 @@ function createDraggable(index) {
     wrap.addEventListener("mouseup", function() {
         this.style.cursor = "grab";
     })
-    wrap.appendChild(image);
-    wrap.appendChild(label);
+    wrap.appendChild(imgwrap);
+    wrap.appendChild(imglabel);
     return wrap;
 }
 
