@@ -22,9 +22,9 @@
         <div id="container">
             <div id="topbar">
                 <div id="question"><p>Q1: What prevents heat from leaving the Earth's surface? And how so?</p></p></div>
-                <div id="buttons">
-                    <div id="previous" class="button" style="display: none"><p>Previous</p></div>
-                    <div id="next" class="button"><p>Next</p></div>
+                <div id="nav">
+                    <div id="previous" class="button nav" style="display: none"><p>Previous</p></div>
+                    <div id="next" class="button nav"><p>Next</p></div>
                 </div>
             </div>
             <div id="interactable">
@@ -33,15 +33,21 @@
                     <div class="toolbox"></div>
                 </div>
                 <div class="contentcol planetcol multi" style="display: none">
-                    <img class="planet-ozone multi" src="media/ozone.png"></img>
-                    <img id="mars" class="planet" src="media/mars.png"></img>
+                    <div class="resetbar"><div class="button reset">Click to reset</div></div>
+                    <div class="graphics">
+                        <img class="planet-ozone multi" src="media/ozone.png"></img>
+                        <img id="mars" class="planet" src="media/mars.png"></img>
+                    </div>
                 </div>
                 <div class="contentcol planetcol">
-                    <img class="planet-ozone multi" src="media/ozone.png"></img>
-                    <img id="earth" class="planet" src="media/earth.png"></img>
+                    <div class="resetbar"><div class="button reset">Click to reset</div></div>
+                    <div class="graphics">
+                        <img class="planet-ozone multi" src="media/ozone.png"></img>
+                        <img id="earth" class="planet" src="media/earth.png"></img>
+                    </div>
                 </div>
                 <div class="contentcol toolcol">
-                    <div class="toolbox-label"> Toolbox: Drag and drop elements to the Earth to answer the question</div>
+                    <div class="toolbox-label">Toolbox: Drag and drop elements to the Earth to answer the question</div>
                     <div class="toolbox"></div>
                 </div>
             </div>

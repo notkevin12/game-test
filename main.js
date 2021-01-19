@@ -1,4 +1,5 @@
 let buttons = document.getElementsByClassName("button");
+    resets = document.getElementsByClassName("reset");
     contentcols = document.getElementsByClassName("contentcol");
     toolboxes = document.getElementsByClassName("toolbox");
     planets = document.getElementsByClassName("planet");
@@ -53,11 +54,32 @@ for (let i = 0; i < draggable.length; i++) {
 
 initialize();
 function initialize() {
-    for (let i = 0; i < dragstore.length; i++) {
-        for (let j = 0; j < toolboxes.length; j++) {
-            toolboxes[j].appendChild(dragstore[i].cloneNode(true));
+    for (let i = 0; i < toolboxes.length; i++) {
+        while (toolboxes[i].firstChild) {
+            toolboxes[i].removeChild(toolboxes[i].firstChild);
+        }
+        for (let j = 0; j < dragstore.length; j++) {
+            toolboxes[i].appendChild(dragstore[j].cloneNode(true));
         }
     }
+    $( "div.draggable" ).draggable( {
+        scroll: false,
+        appendTo: "#interactable", 
+        containment: "#interactable",
+        stack: "img",
+        start: function() {
+            this.style.boxShadow = "3px 3px 10px black";
+            this.style.cursor = "grabbing";
+        },
+        stop: function() {
+            this.style.boxShadow = "none";
+            this.style.cursor = "grab";
+        }
+    });
+}
+
+for (let i = 0; i < resets.length; i++) {
+    resets[i].addEventListener("click", initialize);
 }
 
 function rearrange(input) {
@@ -111,29 +133,6 @@ function createDraggable(index) {
     return wrap;
 }
 
-function highlight() {
-    this.style.boxShadow = "3px 3px 10px black";
-    this.style.cursor = "grabbing";
-}
-function unhighlight() {
-    this.style.boxShadow = "none";
-    this.style.cursor = "grab";
-}
-
-$( "div.draggable" ).draggable( {
-    scroll: false,
-    appendTo: "#interactable", 
-    containment: "#interactable",
-    stack: "img",
-    start: function() {
-        this.style.boxShadow = "3px 3px 10px black";
-        this.style.cursor = "grabbing";
-    },
-    stop: function() {
-        this.style.boxShadow = "none";
-        this.style.cursor = "grab";
-    }
-});
 
 $( "div.planetcol" ).droppable( {
     drop: function(event, ui) {
