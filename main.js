@@ -93,6 +93,12 @@ function createDraggable(index) {
     label.style.fontWeight = "500";
     wrap.classList.add("draggable");
     wrap.classList.add("index" + index);
+    wrap.addEventListener("mousedown", function() {
+        this.style.cursor = "grabbing";
+    })
+    wrap.addEventListener("mouseup", function() {
+        this.style.cursor = "grab";
+    })
     wrap.appendChild(image);
     wrap.appendChild(label);
     return wrap;
