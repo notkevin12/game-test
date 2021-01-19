@@ -59,13 +59,32 @@ function initialize() {
             toolboxes[i].removeChild(toolboxes[i].firstChild);
         }
         for (let j = 0; j < dragstore.length; j++) {
-            toolboxes[i].appendChild(dragstore[j].cloneNode(true));
+            let clone = dragstore[j].cloneNode(true);
+            if (i === 0)
+                clone.classList.add("draggable-multi");
+            else
+                clone.classList.add("draggable-single");
+            toolboxes[i].appendChild(clone);
         }
     }
-    $( "div.draggable" ).draggable( {
+    $( "div.draggable-multi" ).draggable( {
         scroll: false,
         appendTo: "#interactable", 
-        containment: "#interactable",
+        containment: "#multi",
+        stack: "img",
+        start: function() {
+            this.style.boxShadow = "3px 3px 10px black";
+            this.style.cursor = "grabbing";
+        },
+        stop: function() {
+            this.style.boxShadow = "none";
+            this.style.cursor = "grab";
+        }
+    });
+    $( "div.draggable-single" ).draggable( {
+        scroll: false,
+        appendTo: "#interactable", 
+        containment: "#single",
         stack: "img",
         start: function() {
             this.style.boxShadow = "3px 3px 10px black";
@@ -83,23 +102,18 @@ for (let i = 0; i < resets.length; i++) {
 }
 
 function rearrange(input) {
-    let multi = document.getElementsByClassName("multi");
+    let multi = document.getElementById("multi");
+        single = document.getElementById("single");
     if (input === 2) {
-        for (let i = 0; i < multi.length; i++) {
-            multi[i].style.display = "flex";
-        }
-        for (let i = 0; i < contentcols.length; i++) {
-            contentcols[i].style.width = "25%";
-        }
+        multi.style.display = "flex";
+        multi.style.width = "50%";
+        single.style.width = "50%";
     }
     else {
-        for (let i = 0; i < multi.length; i++) {
-            multi[i].style.display = "none";
-        }
-        for (let i = 0; i < contentcols.length; i++) {
-            contentcols[i].style.width = "50%";
-        }
+        multi.style.display = "none";
+        single.style.width = "100%";
     }
+    initialize();
 }
 
 function createDraggable(index) {

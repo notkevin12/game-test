@@ -9,13 +9,6 @@
         <link href="style.css" rel="stylesheet"></link>
         <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
         <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
-        <script>
-        $( function() {
-            $( "#draggable" ).draggable({
-                containment: $( "#interactable" )
-            });
-        } );
-        </script>
         <script src="main.js" defer></script>
     </head>
     <body>
@@ -28,27 +21,31 @@
                 </div>
             </div>
             <div id="interactable">
-                <div class="contentcol toolcol multi" style="display: none">
-                    <div class="toolbox-label">Toolbox: Drag and drop elements to Mars to answer the question</div>
-                    <div class="toolbox"></div>
-                </div>
-                <div class="contentcol planetcol multi" style="display: none">
-                    <div class="resetbar"><div class="button reset">Click to reset</div></div>
-                    <div class="graphics">
-                        <img class="planet-ozone multi" src="media/ozone.png"></img>
-                        <img id="mars" class="planet" src="media/mars.png"></img>
+                <div id="multi" class="half" style="display: none">
+                    <div class="contentcol toolcol">
+                        <div class="toolbox-label">Toolbox: Drag and drop elements to Mars to answer the question</div>
+                        <div class="toolbox"></div>
+                    </div>
+                    <div class="contentcol planetcol" >
+                        <div class="resetbar"><div class="button reset">Click to reset</div></div>
+                        <div class="graphics">
+                            <img class="planet-ozone" src="media/ozone.png"></img>
+                            <img id="mars" class="planet" src="media/mars.png"></img>
+                        </div>
                     </div>
                 </div>
-                <div class="contentcol planetcol">
-                    <div class="resetbar"><div class="button reset">Click to reset</div></div>
-                    <div class="graphics">
-                        <img class="planet-ozone multi" src="media/ozone.png"></img>
-                        <img id="earth" class="planet" src="media/earth.png"></img>
+                <div id="single" class="half">
+                    <div class="contentcol planetcol">
+                        <div class="resetbar"><div class="button reset">Click to reset</div></div>
+                        <div class="graphics">
+                            <img class="planet-ozone multi" src="media/ozone.png"></img>
+                            <img id="earth" class="planet" src="media/earth.png"></img>
+                        </div>
                     </div>
-                </div>
-                <div class="contentcol toolcol">
-                    <div class="toolbox-label">Toolbox: Drag and drop elements to the Earth to answer the question</div>
-                    <div class="toolbox"></div>
+                    <div class="contentcol toolcol">
+                        <div class="toolbox-label">Toolbox: Drag and drop elements to the Earth to answer the question</div>
+                        <div class="toolbox"></div>
+                    </div>
                 </div>
             </div>
         </div>

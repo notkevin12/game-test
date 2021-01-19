@@ -43,13 +43,19 @@ body {
     height: 100%;
 }
 
+.half {
+    display: flex;
+    height: 100%;
+    width: 100%;
+}
+
 .contentcol {
     display: flex;
     flex-direction: column;
     align-items: center;
     justify-content: center;
-    width: 50%;
     height: 100%;
+    width: 50%;
 }
 
 .planetcol {
