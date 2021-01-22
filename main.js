@@ -104,14 +104,21 @@ for (let i = 0; i < resets.length; i++) {
 function rearrange(input) {
     let multi = document.getElementById("multi");
         single = document.getElementById("single");
+        ozones = document.getElementsByClassName("planet-ozone");
     if (input === 2) {
         multi.style.display = "flex";
         multi.style.width = "50%";
         single.style.width = "50%";
+        for (let i = 0; i < ozones.length; i++) {
+            ozones[i].style.display = "inline-block";
+        }
     }
     else {
         multi.style.display = "none";
         single.style.width = "100%";
+        for (let i = 0; i < ozones.length; i++) {
+            ozones[i].style.display = "none";
+        }
     }
     initialize();
 }
