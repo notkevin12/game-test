@@ -64,12 +64,15 @@ function initialize() {
                 clone.classList.add("draggable-multi");
             else
                 clone.classList.add("draggable-single");
+            if (page === 2 && j === 8) {
+                clone.style.display = "none";
+            }
             toolboxes[i].appendChild(clone);
         }
     }
     $( "div.draggable-single" ).draggable( {
         appendTo: "#interactable",
-        containment: "#single",
+        containment: "#left",
         stack: $("div.graphics"),
         revert: true,
         revertDuration: 0,
@@ -84,7 +87,7 @@ function initialize() {
     });
     $( "div.draggable-multi" ).draggable( {
         appendTo: "#interactable",
-        containment: "#multi",
+        containment: "#right",
         stack: $("div.graphics"),
         revert: true,
         revertDuration: 0,
@@ -110,16 +113,12 @@ for (let i = 0; i < resets.length; i++) {
 function rearrange(input) {
     let halves = document.getElementsByClassName("half");
         multi = document.getElementsByClassName("multi");
-        overlays = document.getElementsByClassName("overlay");
     if (input === 2) {
         for (let i = 0; i < halves.length; i++) {
             halves[i].style.width = "50%";
         }
         for (let i = 0; i < multi.length; i++) {
             multi[i].style.display = "flex";
-        }
-        for (let i = 0; i < overlays.length; i++) {
-            overlays[i].style.width = "24vw";
         }
     }
     else {
@@ -128,9 +127,6 @@ function rearrange(input) {
         }
         for (let i = 0; i < multi.length; i++) {
             multi[i].style.display = "none";
-        }
-        for (let i = 0; i < overlays.length; i++) {
-            overlays[i].style.width = "48vw";
         }
     }
     initialize();
@@ -180,6 +176,37 @@ $( "div.planetcol" ).droppable( {
             clone.style.top = ui.offset.top + "px";
             clone.style.left = ui.offset.left + "px";
             clone.classList.add("active");
+            //$(clone).find("div.imglabel").css({fontSize: "1vw"});
+            if (index === 2 || index === 7 || index === 8) {
+                $(clone).find("img").css({width: "100%"});
+                clone.style.height = "auto"
+                if (page === 2) {
+                    clone.style.width = "22vw";
+                    clone.style.left = (ui.offset.left - clone.clientWidth) + "px";
+                }
+                else {
+                    clone.style.width = "45vw";
+                }
+            }
+            else if (index === 9) {
+                clone.style.width = "auto";
+                if (page === 2) {
+                    clone.style.height = "30vh";
+                }
+                else {
+                    clone.style.height = "30vh";
+                }
+            }
+            else {
+                if (page === 2) {
+                    clone.style.height = "11vh";
+                    clone.style.width = "6.21vw";
+                }
+                else {
+                    clone.style.height = "22vh";
+                    clone.style.width = "21.528vh";
+                }
+            }
             if (ui.draggable.attr("class").includes("draggable-single")) {
                 $( clone ).draggable( {
                     containment: "#left",
