@@ -50,6 +50,7 @@ body {
 }
 
 .contentcol {
+    position: relative;
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -62,6 +63,13 @@ body {
     justify-content: flex-end;
 }
 
+.ozone-label {
+    position: relative;
+    justify-content: center;
+    font-size: 1vw;
+    bottom: 12%;
+}
+
 .resetbar {
     display: flex;
     flex-direction: column;
@@ -72,16 +80,24 @@ body {
 }
 
 .reset {
-    display: flex;
+    display: none;
     align-items: center;
     justify-content: center;
     height: fit-content;
     min-height: 80%;
-    width: 20%;
+    width: 9vw;
     font-size: 1vw;
     text-align: center;
     background-color: rgb(241, 241, 241);
     border-radius: 30px;
+}
+
+.overlay {
+    background-color: rgba(255, 0, 0, 0.342);
+    height: 88.32vh;
+    width: 48vw;
+    z-index: 2;
+    position: absolute;
 }
 
 .graphics {
@@ -91,6 +107,7 @@ body {
     justify-content: flex-end;
     height: 92%;
     width: 100%;
+    position: relative;
 }
 
 .toolbox-label {
@@ -129,10 +146,8 @@ body {
 
 #interactable {
     display: flex;
-    background-color: white;
     height: 92%;
     width: 100%;
-    border-radius: 10px;
 }
 
 #background{
@@ -176,10 +191,6 @@ body {
 .planet {
     height: auto;
     width: 90%;
-}
-
-#draggable {
-    display: none;
 }
 
 .draggable {

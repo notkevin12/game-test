@@ -3,7 +3,7 @@
     <head>
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1">
-        <title>jQuery UI Draggable - Default functionality</title>
+        <title>Game</title>
         <link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
         <link rel="stylesheet" href="/resources/demos/style.css">
         <link href="style.css" rel="stylesheet"></link>
@@ -21,24 +21,26 @@
                 </div>
             </div>
             <div id="interactable">
-                <div id="multi" class="half" style="display: none">
+                <div id="right" class="half multi" style="display: none">
                     <div class="contentcol toolcol">
                         <div class="toolbox-label">Toolbox: Drag and drop elements to Mars to answer the question</div>
                         <div class="toolbox"></div>
                     </div>
-                    <div class="contentcol planetcol" >
+                    <div class="contentcol planetcol">
                         <div class="resetbar"><div class="button reset">Click to reset</div></div>
                         <div class="graphics">
-                            <img class="planet-ozone" src="media/ozone.png"></img>
+                            <img class="planet-ozone multi" src="media/ozone.png"></img>
+                            <div class="planet-ozone ozone-label multi">Ozone layer</div>
                             <img id="mars" class="planet" src="media/mars.png"></img>
                         </div>
                     </div>
                 </div>
-                <div id="single" class="half">
+                <div id="left" class="half">
                     <div class="contentcol planetcol">
                         <div class="resetbar"><div class="button reset">Click to reset</div></div>
                         <div class="graphics">
-                            <img class="planet-ozone" src="media/ozone.png"></img>
+                            <img class="planet-ozone multi" src="media/ozone.png"></img>
+                            <div class="planet-ozone ozone-label multi">Ozone layer</div>
                             <img id="earth" class="planet" src="media/earth.png"></img>
                         </div>
                     </div>
