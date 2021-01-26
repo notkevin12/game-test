@@ -176,13 +176,17 @@ $( "div.planetcol" ).droppable( {
             clone.style.top = ui.offset.top + "px";
             clone.style.left = ui.offset.left + "px";
             clone.classList.add("active");
-            //$(clone).find("div.imglabel").css({fontSize: "1vw"});
+            if (page === 2) {
+                $(clone).find("div.imglabel").css({fontSize: ".8em"});
+            }
+            else {
+                $(clone).find("div.imglabel").css({fontSize: "1em"});
+            }
             if (index === 2 || index === 7 || index === 8) {
                 $(clone).find("img").css({width: "100%"});
                 clone.style.height = "auto"
                 if (page === 2) {
                     clone.style.width = "22vw";
-                    clone.style.left = (ui.offset.left - clone.clientWidth) + "px";
                 }
                 else {
                     clone.style.width = "45vw";
@@ -200,6 +204,7 @@ $( "div.planetcol" ).droppable( {
             else {
                 if (page === 2) {
                     clone.style.height = "11vh";
+                    //clone.style.height = "6.21vw";
                     clone.style.width = "6.21vw";
                 }
                 else {
