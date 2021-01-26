@@ -197,13 +197,17 @@ $( "div.planetcol" ).droppable( {
                 }
             }
             else {
+                clone.style.height = "19.08vh";
                 if (page === 2) {
-                    clone.style.height = "15.9vh";
-                    clone.style.width = "5.4vw";
+                    clone.style.height = "22.896vh";
+                    clone.style.width = "7.8vw";
+                    $(clone).find("div.imgwrap").css({height: "60%"});
                 }
                 else {
-                    clone.style.height = "22vh";
-                    clone.style.width = "21.528vh";
+                    clone.style.height = "22.896vh";
+                    clone.style.width = "13vw";
+                    $(clone).find("div.imgwrap").css({height: "70%"});
+                    $(clone).find("div.imglabel").css({fontSize: "1.2vw"});
                 }
             }
             if (ui.draggable.attr("class").includes("draggable-single")) {
