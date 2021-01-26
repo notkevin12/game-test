@@ -100,7 +100,8 @@ function initialize() {
             this.style.cursor = "grab";
         }
     });
-    $( "div.active" ).remove();
+    $("div.active").remove();
+    $("div.reset").css({display: "none"});
 }
 
 for (let i = 0; i < resets.length; i++) {
@@ -151,12 +152,6 @@ function createDraggable(index) {
     imglabel.className = "imglabel";
     imglabel.innerHTML = draggablenames[index];
     wrap.classList.add("draggable");
-    wrap.addEventListener("mousedown", function() {
-        this.style.cursor = "grabbing";
-    })
-    wrap.addEventListener("mouseup", function() {
-        this.style.cursor = "grab";
-    })
     wrap.appendChild(imgwrap);
     wrap.appendChild(imglabel);
     $(wrap).attr("nodeName", function() {
@@ -176,14 +171,9 @@ $( "div.planetcol" ).droppable( {
             clone.style.top = ui.offset.top + "px";
             clone.style.left = ui.offset.left + "px";
             clone.classList.add("active");
-            if (page === 2) {
-                $(clone).find("div.imglabel").css({fontSize: ".8em"});
-            }
-            else {
-                $(clone).find("div.imglabel").css({fontSize: "1em"});
-            }
             if (index === 2 || index === 7 || index === 8) {
                 $(clone).find("img").css({width: "100%"});
+                $(clone).find("imglabel").css({fontSize: "5vw"});
                 clone.style.height = "auto"
                 if (page === 2) {
                     clone.style.width = "22vw";
@@ -193,19 +183,23 @@ $( "div.planetcol" ).droppable( {
                 }
             }
             else if (index === 9) {
-                clone.style.width = "auto";
+                $(clone).find("div.imgwrap").css({height: "80%"});
+                $(clone).find("div.imglabel").css({height: "20%"});
+                clone.style.width = "7vw";
                 if (page === 2) {
-                    clone.style.height = "30vh";
+                    clone.style.height = "20vh";
+                    clone.style.width = "4.667vw";
                 }
                 else {
                     clone.style.height = "30vh";
+                    clone.style.width = "7vw";
+                    $(clone).find("div.imglabel").css({fontSize: "1.2vw"});
                 }
             }
             else {
                 if (page === 2) {
-                    clone.style.height = "11vh";
-                    //clone.style.height = "6.21vw";
-                    clone.style.width = "6.21vw";
+                    clone.style.height = "15.9vh";
+                    clone.style.width = "5.4vw";
                 }
                 else {
                     clone.style.height = "22vh";

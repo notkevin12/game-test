@@ -92,14 +92,6 @@ body {
     border-radius: 30px;
 }
 
-.overlay {
-    background-color: rgba(255, 0, 0, 0.342);
-    height: 88.32vh;
-    width: 48vw;
-    z-index: 2;
-    position: absolute;
-}
-
 .graphics {
     display: flex;
     flex-direction: column;
@@ -166,7 +158,8 @@ body {
 }
 
 .imglabel{
-    height: 50%;
+    position: relative;
+    height: fit-content;
     width: 90%;
     text-align: center;
     font-size: .8vw;
