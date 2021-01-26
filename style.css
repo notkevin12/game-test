@@ -195,3 +195,7 @@ body {
     width: 25%;
     cursor: grab;
 }
+
+.active {
+    position: absolute;
+}

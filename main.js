@@ -173,13 +173,14 @@ $( "div.planetcol" ).droppable( {
             clone.classList.add("active");
             if (index === 2 || index === 7 || index === 8) {
                 $(clone).find("img").css({width: "100%"});
-                $(clone).find("imglabel").css({fontSize: "5vw"});
                 clone.style.height = "auto"
                 if (page === 2) {
                     clone.style.width = "22vw";
+                    $(clone).find("div.imglabel").css({bottom: "8vw"});
                 }
                 else {
                     clone.style.width = "45vw";
+                    $(clone).find("div.imglabel").css({fontSize: "1.2vw", bottom: "18vw"});
                 }
             }
             else if (index === 9) {
