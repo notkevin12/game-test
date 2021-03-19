@@ -8,7 +8,7 @@ let buttons = document.getElementsByClassName("button");
     draggable = ["cool-weather", "distance-from-the-sun", "greenhouse-gases", "infrared-radiation-absorbed", "infrared-radiation-bounced-around", "infrared-radiation-leaves", "infrared-radiation-reflected", "oxygen-layer", "ozone", "planet-axis-tilt", "solar-flares", "sunlight-absorbed", "sunlight-bounced-around", "sunlight-leaves", "sunlight-reflected", "time-of-day", "uv-ray-absorbed", "uv-ray-enters", "uv-ray-reflected", "warm-weather"];
     draggablenames = ["Cool Weather", "Distance From The Sun", "Greenhouse Gases", "Infrared Radiation Absorbed", "Infrared Radiation Bounced Around", "Infrared Radiation Leaves", "Infrared Radiation Reflected", "Oxygen Layer", "Ozone Layer", "Planet Axis Tilt", "Solar Flares", "Sunlight Absorbed", "Sunlight Bounced Around", "Sunlight Leaves", "Sunlight Reflected", "Time of Day", "UV ray absorbed", "UV ray enters", "UV ray reflected", "Warm Weather"];
     dragstore = new Array;
-    questions = ["Q1: What prevents heat from leaving the Earth's surface? And how so?", "Q2: Explain why Earth and Mars have different climates (Earth is warm enough to sustain life, but Mars is not) when they both have ozone layers.", "Q3: Explain what the ozone layer and greenhouse gases do for Earth."];
+    questions = ["Q1: What prevents heat from leaving the Earth's surface? And how so?", "Q2: In a distant solar system, there is a planet the same size and distance from its sun as earth is from our sun. This planet (Planet O) is very similar to Earth, however it is too cold to sustain life. Explain why Earth and Plant O might have different climates when they both have ozone layers.", "Q3: Explain what the ozone layer and greenhouse gases do for Earth."];
     page = 1;
 
 
@@ -115,6 +115,7 @@ function rearrange(input) {
     let halves = document.getElementsByClassName("half");
         multi = document.getElementsByClassName("multi");
     if (input === 2) {
+        document.getElementById("question").children[0].style.fontSize = "1vw";
         for (let i = 0; i < halves.length; i++) {
             halves[i].style.width = "50%";
         }
@@ -123,6 +124,7 @@ function rearrange(input) {
         }
     }
     else {
+        document.getElementById("question").children[0].style.fontSize = "1.4vw";
         for (let i = 0; i < halves.length; i++) {
             halves[i].style.width = "100%";
         }
